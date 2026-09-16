@@ -15,29 +15,43 @@
 
     <h1>Todo List</h1>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4a4957f954f075e71959592f18e5b029b5d81eea
     <input
         type="text"
         id="taskinput"
         placeholder="Add a task"
     />
 
+<<<<<<< HEAD
 
     <button id="add-task-btn" type="button">Add Task</button>
 
 
     <ul id="tasklist"></ul>
 
+=======
+    <button onclick="addTask()">Add Task</button>
+
+    <ul id="tasklist">Your tasks go here</ul>
+>>>>>>> 4a4957f954f075e71959592f18e5b029b5d81eea
 
     <script>
         const taskInput = document.getElementById('taskinput');
         const taskList = document.getElementById('tasklist');
         const addTaskButton = document.getElementById('add-task-btn');
 
+<<<<<<< HEAD
 
         function getTaskText() {
             const text = taskInput.value.trim();
             console.log('The input value is: ' + text);
+=======
+            console.log("The input value is: " + input.value);
+
+>>>>>>> 4a4957f954f075e71959592f18e5b029b5d81eea
             return text;
         }
 
@@ -45,9 +59,13 @@
         function addTask() {
             const taskText = getTaskText();
 
+<<<<<<< HEAD
 
             if (!taskText) {
                 taskInput.focus();
+=======
+            if (taskText === "") {
+>>>>>>> 4a4957f954f075e71959592f18e5b029b5d81eea
                 return;
             }
 
@@ -60,9 +78,18 @@
 
         function addTaskItem(taskText) {
             const li = document.createElement('li');
+
             const taskSpan = document.createElement('span');
             taskSpan.textContent = taskText;
 
+<<<<<<< HEAD
+=======
+            li.appendChild(taskSpan);
+
+            document.getElementById('tasklist').appendChild(li);
+        }
+    </script>
+>>>>>>> 4a4957f954f075e71959592f18e5b029b5d81eea
 
             li.appendChild(taskSpan);
 
