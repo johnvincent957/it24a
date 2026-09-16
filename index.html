@@ -4,43 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List</title>
+    <style>
+        .done span {
+            text-decoration: line-through;
+        }
+    </style>
 </head>
 <body>
 
+
     <h1>Todo List</h1>
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 4a4957f954f075e71959592f18e5b029b5d81eea
     <input
         type="text"
         id="taskinput"
         placeholder="Add a task"
     />
 
+<<<<<<< HEAD
+
+    <button id="add-task-btn" type="button">Add Task</button>
+
+
+    <ul id="tasklist"></ul>
+
+=======
     <button onclick="addTask()">Add Task</button>
 
     <ul id="tasklist">Your tasks go here</ul>
+>>>>>>> 4a4957f954f075e71959592f18e5b029b5d81eea
 
     <script>
-        function getTaskText() {
-            const input = document.getElementById('taskinput');
-            const text = input.value.trim();
+        const taskInput = document.getElementById('taskinput');
+        const taskList = document.getElementById('tasklist');
+        const addTaskButton = document.getElementById('add-task-btn');
 
+<<<<<<< HEAD
+
+        function getTaskText() {
+            const text = taskInput.value.trim();
+            console.log('The input value is: ' + text);
+=======
             console.log("The input value is: " + input.value);
 
+>>>>>>> 4a4957f954f075e71959592f18e5b029b5d81eea
             return text;
         }
+
 
         function addTask() {
             const taskText = getTaskText();
 
+<<<<<<< HEAD
+
+            if (!taskText) {
+                taskInput.focus();
+=======
             if (taskText === "") {
+>>>>>>> 4a4957f954f075e71959592f18e5b029b5d81eea
                 return;
             }
 
-            addTaskItem(taskText);
 
-            // Clear the input after adding
-            document.getElementById('taskinput').value = "";
+            addTaskItem(taskText);
+            taskInput.value = '';
+            taskInput.focus();
         }
+
 
         function addTaskItem(taskText) {
             const li = document.createElement('li');
@@ -48,11 +82,108 @@
             const taskSpan = document.createElement('span');
             taskSpan.textContent = taskText;
 
+<<<<<<< HEAD
+=======
             li.appendChild(taskSpan);
 
             document.getElementById('tasklist').appendChild(li);
         }
     </script>
+>>>>>>> 4a4957f954f075e71959592f18e5b029b5d81eea
 
+            li.appendChild(taskSpan);
+
+
+            const doneBtn = createDoneButton(li, taskSpan);
+            const editBtn = createEditButton(taskSpan);
+            const deleteBtn = createDeleteButton(li);
+
+
+            li.appendChild(doneBtn);
+            li.appendChild(editBtn);
+            li.appendChild(deleteBtn);
+            taskList.appendChild(li);
+        }
+
+
+        function createDoneButton(li, taskSpan) {
+            const doneBtn = document.createElement('button');
+            doneBtn.type = 'button';
+            doneBtn.textContent = 'Done';
+
+
+            doneBtn.addEventListener('click', () => {
+                if (li.classList.contains('done')) {
+                    return;
+                }
+
+
+                li.classList.add('done');
+                doneBtn.disabled = true;
+                console.log('task completed', taskSpan.textContent, new Date());
+            });
+
+
+            return doneBtn;
+        }
+
+
+        function createEditButton(taskSpan) {
+            const editBtn = document.createElement('button');
+            editBtn.type = 'button';
+            editBtn.textContent = 'Edit';
+            editBtn.style.marginLeft = '8px';
+
+
+            editBtn.addEventListener('click', () => {
+                const currentText = taskSpan.textContent.trim();
+                const newText = prompt('Edit your task:', currentText);
+
+
+                if (newText === null) {
+                    return;
+                }
+
+
+                const trimmedText = newText.trim();
+                if (trimmedText) {
+                    taskSpan.textContent = trimmedText;
+                }
+            });
+
+
+            return editBtn;
+        }
+
+
+        function createDeleteButton(li) {
+            const deleteBtn = document.createElement('button');
+            deleteBtn.type = 'button';
+            deleteBtn.textContent = 'Delete';
+            deleteBtn.style.marginLeft = '8px';
+
+
+            deleteBtn.addEventListener('click', () => {
+                const confirmDelete = window.confirm('Are you sure you want to delete this task?');
+                if (confirmDelete) {
+                    li.remove();
+                }
+            });
+
+
+            return deleteBtn;
+        }
+
+
+        addTaskButton.addEventListener('click', addTask);
+
+
+        taskInput.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                addTask();
+            }
+        });
+    </script>
 </body>
 </html>
+
