@@ -47,7 +47,7 @@
                 const marker = L.marker([pin.lat,pin.lng]).addTo(map);
                 const image = `<img src='${pin.img}' class="popup-image">`;
                 marker.bindPopup(`
-                ${pin.title}<vbr>
+                ${pin.title}<br>
                     <hr> 
                     ${image}
                     `);
@@ -58,7 +58,7 @@
 
     }
 
-    initMap('caampus-map.json');
+    initMap('campus-map.json');
     
 
 </script>
